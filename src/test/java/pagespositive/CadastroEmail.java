@@ -20,7 +20,7 @@ public class CadastroEmail {
     public void preencherCampo() {
 
         WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("Username")));
-        email.sendKeys("Tharsilammss");
+        email.sendKeys("Annalammss");
 
         WebElement botaoAvancar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Avançar')]")));
         botaoAvancar.click();

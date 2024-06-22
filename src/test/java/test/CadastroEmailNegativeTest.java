@@ -1,27 +1,29 @@
 package test;
 
-import org.junit.After;
+import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pagesnegative.CadastroEmailNegative;
 import pagespositive.*;
 
 
-public class CadastroNomeTest {
+
+public class CadastroEmailNegativeTest extends TestCase {
     static WebDriver driver;
-    static  CadastroNome cadastroNome;
+    static CadastroNome cadastroNome;
     static CadastroIdade cadastroIdade;
-    static CadastroEmail cadastroEmail;
-    static CadastroSenha cadastroSenha;
-    static CadastroNumero cadastroNumero;
+    static CadastroEmailNegative cadastroEmailNegative;
+
 
     @Before
     public void setUp() throws Exception {
     }
 
     @Test
-    public void test1(){
+    public void testEmailNegative(){
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://accounts.google.com/SignUp?hl=pt");
@@ -34,21 +36,12 @@ public class CadastroNomeTest {
 
         cadastroIdade.preencherCampo();
 
-        cadastroEmail = new CadastroEmail(driver);
+        cadastroEmailNegative = new CadastroEmailNegative(driver);
 
-        cadastroEmail.preencherCampo();
+        cadastroEmailNegative.preencherCampo();
+        String mensagem = cadastroEmailNegative.validarMensagemNome();
+        Assert.assertEquals("Somente letras (a - z), números (0 - 9) e pontos (.) são permitidos.", mensagem);
+        driver.quit();
+}
 
-        cadastroSenha = new CadastroSenha(driver);
-
-        cadastroSenha.preencherCampo();
-
-        cadastroNumero = new CadastroNumero(driver);
-
-        cadastroNumero.preencherCampo();
-    }
-
-
-    @After
-    public void tearDown() throws Exception {
-    }
 }

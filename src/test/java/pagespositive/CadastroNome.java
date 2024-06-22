@@ -16,10 +16,10 @@ public class CadastroNome {
     }
     public void preencherCampo(){
         WebElement nome = driver.findElement(By.id("firstName"));
-   nome.sendKeys("Tharsila");
+   nome.sendKeys("Ana");
 
         WebElement sobrenome = driver.findElement(By.id("lastName"));
-        sobrenome.sendKeys("Morais");
+        sobrenome.sendKeys("Silva");
 
         WebElement botaoAvancar = driver.findElement(By.xpath("//span[contains(text(),'Avançar')]"));
         botaoAvancar.click();
